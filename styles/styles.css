@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Red+Hat+Text:wght@700&family=Space+Mono&display=swap');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary-grayish-blue: hsl(237, 18%, 59%);
+    --primary-soft-red: hsl(345, 95%, 68%);
+    --neutral-white: hsl(0, 0%, 100%);
+    --neutral-dark-blue: hsl(236, 21%, 26%);
+    --neutral-very-dark-blue: hsl(235, 16%, 14%);
+    --neutral-very-dark-blackish-blue: hsl(234, 17%, 12%);
+}
+
+html, body, main {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    font-family: 'Red Hat Text', sans-serif;
+    font-size: 14px;
+}
+
+header {
+    color: var(--neutral-white);
+    padding-top: 25vh;
+    padding-bottom: calc(12.5vh - 2rem);
+    letter-spacing: 0.5rem;
+    text-align: center;
+    font-size: .7rem;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-image: 
+        url('./../images/bg-stars.svg'), 
+        url('./../images/pattern-hills.svg'), 
+        linear-gradient(to bottom,var(--neutral-very-dark-blackish-blue),var(--neutral-very-dark-blue), var(--neutral-dark-blue));
+    background-position: center, right bottom, center;
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-size: 100% 50%, 220% 20%, contain;
+}
+
+main div {
+    color: var(--primary-grayish-blue);
+}
+
+.main-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.rect {
+    width: 5em;
+    height: 3em;
+    background-color: var(--neutral-dark-blue);
+    border-radius: 0.5rem;
+}
+
+.top {
+    border-bottom-left-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+    border-bottom: 1px solid var(--neutral-very-dark-blue);
+}
+
+.bottom {
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
