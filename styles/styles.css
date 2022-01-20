@@ -15,6 +15,10 @@
     --neutral-dark-blue: hsl(236, 21%, 26%);
     --neutral-very-dark-blue: hsl(235, 16%, 14%);
     --neutral-very-dark-blackish-blue: hsl(234, 17%, 12%);
+
+    --card-width: 5rem;
+    --card-height: 2.5rem;
+    --letter-spacing: 0.5rem;
 }
 
 html, body, main {
@@ -30,7 +34,7 @@ header {
     color: var(--neutral-white);
     padding-top: 25vh;
     padding-bottom: calc(12.5vh - 2rem);
-    letter-spacing: 0.5rem;
+    letter-spacing: var(--letter-spacing);
     text-align: center;
     font-size: .7rem;
 }
@@ -52,30 +56,59 @@ main div {
     color: var(--primary-grayish-blue);
 }
 
-.main-grid {
+.card-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+footer {
+    display: flex;
+    gap: 2rem;
+    position: absolute;
+    bottom: 4rem;
+}
+
+.card {
+    width: var(--card-width);
+    height: calc(2 * var(--card-height));
+    position: relative;
 }
 
 .rect {
-    width: 5em;
-    height: 3em;
-    background-color: var(--neutral-dark-blue);
-    border-radius: 0.5rem;
+    width: var(--card-width);
+    height: var(--card-height);
+    border-radius: .25rem;
+    background-color: white;
 }
 
 .top {
-    border-bottom-left-radius: .5rem;
-    border-bottom-right-radius: .5rem;
     border-bottom: 1px solid var(--neutral-very-dark-blue);
+    background-color: var(--neutral-dark-blue);
+    /* change opacity*/
 }
+
+#content {
+    font-size: 2.5rem;
+    color: var(--primary-soft-red);
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 
 .bottom {
-    border-top-left-radius: .5rem;
-    border-top-right-radius: .5rem;
+    background-color: var(--neutral-dark-blue);
+    box-shadow: 0 0.45rem var(--neutral-very-dark-blackish-blue);
 }
 
-.footer-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-}
+.card span {
+    position: absolute;
+    bottom: -30%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.55rem;
+    letter-spacing: calc(var(--letter-spacing)/2);
+    font-weight: 800;
+    }
