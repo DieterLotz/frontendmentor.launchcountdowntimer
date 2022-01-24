@@ -114,6 +114,7 @@ footer img:hover {
     top: calc(var(--card-height) * 0.30);
     left: 50%;
     transform: translate(-50%);
+    backface-visibility: hidden;
 }
 
 .bottom {
