@@ -18,6 +18,8 @@
 
     --card-width: 5rem;
     --card-height: 2.5rem;
+    --card-concave-element-width: calc(.08 * var(--card-width));
+    --card-concave-element-height: calc(.15 * var(--card-height));  
     --letter-spacing: 0.5rem;
 }
 
@@ -69,6 +71,11 @@ footer {
     bottom: 4rem;
 }
 
+footer img:hover {
+    cursor: pointer;
+    background-image: linear-gradient(to bottom, var(--primary-soft-red),var(--primary-soft-red));
+}
+
 .card {
     width: var(--card-width);
     height: calc(2 * var(--card-height));
@@ -79,28 +86,64 @@ footer {
     width: var(--card-width);
     height: var(--card-height);
     border-radius: .25rem;
-    background-color: white;
 }
 
 .top {
+    border-top: 1px solid var(--neutral-very-dark-blue);
     border-bottom: 1px solid var(--neutral-very-dark-blue);
     background-color: var(--neutral-dark-blue);
+    position: relative;
     /* change opacity*/
 }
 
-#content {
+.top:hover {
+    z-index: 3;
+    cursor: pointer;
+    transform: rotateX(180deg);
+    transition: 1s all ease;
+    transform-origin: bottom center;
+    perspective: 600px;
+    transform-style: preserve-3d;
+}
+
+.content {
     font-size: 2.5rem;
     color: var(--primary-soft-red);
     position: absolute;
     z-index: 1;
-    top: 50%;
+    top: calc(var(--card-height) * 0.30);
     left: 50%;
-    transform: translate(-50%, -50%);
-  }
+    transform: translate(-50%);
+}
 
 .bottom {
     background-color: var(--neutral-dark-blue);
     box-shadow: 0 0.45rem var(--neutral-very-dark-blackish-blue);
+    position: relative;
+    z-index: 0;
+}
+
+.bottom::before {
+    content: '';
+    position: absolute;
+    background: var(--neutral-very-dark-blackish-blue);
+    width: var(--card-concave-element-width);
+    height: var(--card-concave-element-height);
+    top: calc(var(--card-concave-element-width) * -0.5);
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+
+.bottom::after {
+    content: '';
+    position: absolute;
+    background: var(--neutral-very-dark-blackish-blue);
+    width: var(--card-concave-element-width);
+    height: var(--card-concave-element-height);
+    top: calc(var(--card-concave-element-width) * -0.5);
+    right: 0;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
 }
 
 .card span {
@@ -111,4 +154,4 @@ footer {
     font-size: 0.55rem;
     letter-spacing: calc(var(--letter-spacing)/2);
     font-weight: 800;
-    }
+}
