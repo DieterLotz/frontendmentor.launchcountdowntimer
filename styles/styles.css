@@ -50,7 +50,7 @@ main {
         url('./../images/pattern-hills.svg'), 
         linear-gradient(to bottom,var(--neutral-very-dark-blackish-blue),var(--neutral-very-dark-blue), var(--neutral-dark-blue));
     background-position: center, right bottom, center;
-    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-repeat: no-repeat;
     background-size: 100% 50%, 220% 20%, contain;
 }
 
@@ -73,7 +73,7 @@ footer {
 
 footer img:hover {
     cursor: pointer;
-    background-image: linear-gradient(to bottom, var(--primary-soft-red),var(--primary-soft-red));
+    fill: var(--primary-soft-red);
 }
 
 .card {
@@ -89,11 +89,10 @@ footer img:hover {
 }
 
 .top {
+    position: relative;
     border-top: 1px solid var(--neutral-very-dark-blue);
     border-bottom: 1px solid var(--neutral-very-dark-blue);
     background-color: var(--neutral-dark-blue);
-    position: relative;
-    /* change opacity*/
 }
 
 .top:hover {
@@ -155,4 +154,40 @@ footer img:hover {
     font-size: 0.55rem;
     letter-spacing: calc(var(--letter-spacing)/2);
     font-weight: 800;
+}
+
+@media screen and (min-width: 900px){
+    :root {
+        --card-width: 8rem;
+        --card-height: 4rem;
+        --card-concave-element-width: calc(.08 * var(--card-width));
+        --card-concave-element-height: calc(.15 * var(--card-height));
+    }
+
+    .content {
+        font-size: 4rem;
+        color: var(--primary-soft-red);
+        position: absolute;
+        z-index: 1;
+        top: calc(var(--card-height) * 0.30);
+        left: 50%;
+        transform: translate(-50%);
+        backface-visibility: hidden;
+    }
+
+    .card span {
+        font-size: 0.8rem;
+    }
+
+    main {
+        background-image: 
+        url('./../images/bg-stars.svg'), 
+        url('./../images/pattern-hills.svg'), 
+        linear-gradient(to bottom,var(--neutral-very-dark-blackish-blue),var(--neutral-very-dark-blue), var(--neutral-dark-blue));
+        background-repeat: no-repeat;
+        background-position: center, bottom, center;
+        background-size: 100% 50%, 100% 20%, cover;
+    }
+
+
 }
