@@ -1,17 +1,16 @@
 const launchDateKey = 'LaunchDate';
 const daysTillLaunch = 14;
 
-const storedFutureDateString = localStorage.getItem(launchDateKey); 
+let storedLaunchDateString = localStorage.getItem(launchDateKey);
 
-if(storedFutureDateString == null)
+if(storedLaunchDateString == null)
 {
-    CalculateLaunchDate();
+    storedLaunchDateString = CalculateLaunchDate();
 }
 
-console.log(storedFutureDateString)
+const storedFutureDate = new Date(storedLaunchDateString);
 
 let tickInterval = setInterval(() => {
-    let storedFutureDate = new Date(storedFutureDateString);
     let now = new Date();
     let difference = storedFutureDate.getTime() - now.getTime();
 
@@ -57,6 +56,7 @@ let tickInterval = setInterval(() => {
     secondsElement.innerText = seconds;    
 
     if(difference < 0){
+        localStorage.removeItem(launchDateKey);
         clearInterval(tickInterval);
     }
 
@@ -75,7 +75,7 @@ function CalculateLaunchDate(){
     const launchDate = new Date(res);
     localStorage.setItem(launchDateKey,launchDate.toString());
 
-    return launchDate;
+    return launchDate.toString();
 }
 
 function HasChanged(oldValue, newValue){

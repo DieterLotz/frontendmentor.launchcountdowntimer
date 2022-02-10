@@ -87,7 +87,7 @@ main div {
     z-index: 3;
     cursor: pointer;
     animation: flipAnimation 0.7s;
-    animation-delay: .2s;
+    animation-delay: .25s;
 }
 
 @keyframes flipAnimation {
