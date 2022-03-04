@@ -1,9 +1,21 @@
+let config = {
+    "launchDateInDays" : 14,
+    "urls" : {
+        "facebook" : "https://www.facebook.com/",
+        "pintrest": "https://pinterest.com/",
+        "instagram" : "https://www.instagram.com/"
+    }
+}
+
 const launchDateKey = 'LaunchDate';
-const daysTillLaunch = 14;
+
+document.getElementById('facebook').setAttribute('href', config.urls.facebook);
+document.getElementById('pintrest').setAttribute('href', config.urls.pintrest); 
+document.getElementById('instagram').setAttribute('href', config.urls.instagram);
 
 let storedLaunchDateString = localStorage.getItem(launchDateKey);
 
-if(storedLaunchDateString == null)
+if(storedLaunchDateString === null)
 {
     storedLaunchDateString = CalculateLaunchDate();
 }
@@ -11,20 +23,22 @@ if(storedLaunchDateString == null)
 const storedFutureDate = new Date(storedLaunchDateString);
 
 let tickInterval = setInterval(() => {
+    let futureDate = storedFutureDate;
     let now = new Date();
-    let difference = storedFutureDate.getTime() - now.getTime();
+
+    let difference = futureDate.getTime() - now.getTime();
 
     let days = Math.floor(difference / (1000 * 60 * 60 * 24));
     let hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     let minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-    console.log(`${days} + ' days'+ ${hours} + ' hours' + ${minutes} + ' minutes' + ${seconds} + ' seconds'`);
+    console.log(`${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`);
     
-    days = (days < 10) ? `0${days}` : days;
-    hours = (hours < 10) ? `0${hours}` : hours;
-    minutes = (minutes < 10) ? `0${minutes}` : minutes;
-    seconds = (seconds < 10) ? `0${seconds}` : seconds;
+    days = (days < 10 && days >= 0) ? `0${days}` : days;
+    hours = (hours < 10 && hours >= 0) ? `0${hours}` : hours;
+    minutes = (minutes < 10 && minutes >= 0) ? `0${minutes}` : minutes;
+    seconds = (seconds < 10 && seconds >= 0) ? `0${seconds}` : seconds;
 
     let daysElement = document.getElementById('days');
     let hoursElement = document.getElementById('hours');
@@ -50,15 +64,17 @@ let tickInterval = setInterval(() => {
         }
     });
 
+    if(difference <= 0){
+        console.log('entered difference')
+        localStorage.removeItem(launchDateKey);        
+        clearInterval(tickInterval);
+        return;
+    }
+
     daysElement.innerText = days;    
     hoursElement.innerText = hours;    
     minutesElement.innerText = minutes;    
     secondsElement.innerText = seconds;    
-
-    if(difference < 0){
-        localStorage.removeItem(launchDateKey);
-        clearInterval(tickInterval);
-    }
 
 }, 1000);
 
@@ -71,7 +87,7 @@ class KeyValuePair {
 
 function CalculateLaunchDate(){
     const today = new Date();
-    const res = today.setDate(today.getDate() + daysTillLaunch);
+    const res = today.setDate(today.getDate() + config.launchDateInDays);
     const launchDate = new Date(res);
     localStorage.setItem(launchDateKey,launchDate.toString());
 
