@@ -47,10 +47,22 @@ let tickInterval = setInterval(() => {
 
     let listOfChanged = 
         [
-            new KeyValuePair('days', HasChanged(daysElement.innerText, days)), 
-            new KeyValuePair('hours', HasChanged(hoursElement.innerText, hours)),
-            new KeyValuePair('minutes', HasChanged(minutesElement.innerText, minutes)),
-            new KeyValuePair('seconds', HasChanged(secondsElement.innerText, seconds)),
+            {
+                key: 'days',
+                value: HasChanged(daysElement.innerText, days)
+            },
+            {
+                key: 'hours',
+                value: HasChanged(hoursElement.innerText, hours)
+            },
+            {
+                key: 'minutes',
+                value: HasChanged(minutesElement.innerText, minutes)
+            },
+            {
+                key: 'seconds',
+                value: HasChanged(secondsElement.innerText, seconds)
+            }
         ];
     
 
@@ -77,13 +89,6 @@ let tickInterval = setInterval(() => {
     secondsElement.innerText = seconds;    
 
 }, 1000);
-
-class KeyValuePair {
-    constructor(key , value){
-        this.key = key;
-        this.value = value;
-    }
-}
 
 function CalculateLaunchDate(){
     const today = new Date();
