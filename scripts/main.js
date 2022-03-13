@@ -32,8 +32,6 @@ let tickInterval = setInterval(() => {
     let hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     let minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-    console.log(`${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`);
     
     days = (days < 10 && days >= 0) ? `0${days}` : days;
     hours = (hours < 10 && hours >= 0) ? `0${hours}` : hours;
