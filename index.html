@@ -6,11 +6,10 @@
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   
-  <title>Frontend Mentor | Launch countdown timer</title>
+  <title>Launch countdown timer</title>
   <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-  <script src=".\scripts\main.js"></script>
   <main>
     <header> 
       <h1>WE'RE LAUNCHING SOON</h1>
@@ -18,7 +17,7 @@
     <div class="card-grid">
       <div class="card">
         <div class="rect top" id="days-top">
-          <div class="content" id="days"></div>
+          <div class="content" id="days">14</div>
         </div>
         <div class="rect bottom"></div>
         <span>DAYS</span>
@@ -26,7 +25,7 @@
 
       <div class="card">
         <div class="rect top" id="hours-top">
-          <div class="content" id="hours"></div>
+          <div class="content" id="hours">00</div>
         </div>        
         <div class="rect bottom"></div>
         <span>HOURS</span>
@@ -34,7 +33,7 @@
 
       <div class="card">
         <div class="rect top" id="minutes-top">
-          <div class="content" id="minutes"></div>
+          <div class="content" id="minutes">00</div>
         </div>
         <div class="rect bottom"></div>
         <span>MINUTES</span>
@@ -42,17 +41,18 @@
 
       <div class="card">
         <div class="rect top" id="seconds-top">
-          <div class="content" id="seconds"></div>
+          <div class="content" id="seconds">00</div>
         </div>
         <div class="rect bottom"></div>
         <span>SECONDS</span>
       </div>
     </div>
     <footer>
-        <img src="./images/icon-facebook.svg" alt="icon-facebook">
-        <img src="./images/icon-pinterest.svg" alt="icon-pinterest">
-        <img src="./images/icon-instagram.svg" alt="icon-instagram">
+        <a id="facebook" href="#" target="_blank"><img src="./images/icon-facebook.svg" alt="icon-facebook"></a>
+        <a id="pintrest" href="#" target="_blank"><img src="./images/icon-pinterest.svg" alt="icon-pinterest"></a>
+        <a id="instagram" href="#" target="_blank"><img src="./images/icon-instagram.svg" alt="icon-instagram"></a>
     </footer>
   </main>
+  <script src="./scripts/main.js"></script>
 </body>
 </html>
